@@ -6,6 +6,9 @@ on:
     - cron: '30 2 * * *'
   workflow_dispatch: # Allow manual triggering
 
+permissions:
+  contents: write
+
 jobs:
   daily-commit:
     runs-on: ubuntu-latest
@@ -37,7 +40,6 @@ jobs:
         
     - name: Push changes - 23f3002617@ds.study.iitm.ac.in
       run: |
+        git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
         git push
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
