@@ -40,6 +40,7 @@ jobs:
         
     - name: Push changes - 23f3002617@ds.study.iitm.ac.in
       run: |
-        git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
         git push
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
